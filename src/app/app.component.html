@@ -1,0 +1,12 @@
+<hello name="{{ name }}"></hello>
+<app-stepper>
+  <app-step>
+    <app-lazy [name]="'[Step 1]'" #lazyComponent>
+    </app-lazy>
+  </app-step>
+
+  <app-step>
+    <app-lazy [name]="'[Step 2]'" #lazyComponent>
+    </app-lazy>
+  </app-step>
+</app-stepper>

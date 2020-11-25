@@ -1,0 +1,13 @@
+<ng-container *ngTemplateOutlet="currentStepTemplate"></ng-container>
+
+<button
+  (click)="onBackwardClick()"
+  [disabled]="isBackwardDisabled()">
+  Step backward
+</button>
+
+<button 
+  (click)="onForwardClick()"
+  [disabled]="isForwardDisabled()">
+  Step forward
+</button>
