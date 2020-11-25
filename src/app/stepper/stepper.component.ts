@@ -17,7 +17,7 @@ export class StepperComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // prevents ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked error
     setTimeout(() =>
-      this.steps?.toArray()[this.currentStepNumber].lazyLoadStepContent.isDisplayedSubject.next(true)
+      this.showStep()
     );    
   }
 
@@ -28,21 +28,21 @@ export class StepperComponent implements OnInit, AfterViewInit {
   }
 
   onBackwardClick() {
-    this.steps?.toArray()[this.currentStepNumber].lazyLoadStepContent.isDisplayedSubject.next(false);
+    this.hideStep();
     this.currentStepNumber = this.currentStepNumber > 0
       ? this.currentStepNumber - 1
       : 0;
-    this.steps?.toArray()[this.currentStepNumber].lazyLoadStepContent.isDisplayedSubject.next(true);
+    this.showStep();
   }
 
   onForwardClick() {
-    this.steps?.toArray()[this.currentStepNumber].lazyLoadStepContent.isDisplayedSubject.next(false);
+    this.hideStep();
     
     this.currentStepNumber = this.currentStepNumber === this.steps.length - 1
       ? this.currentStepNumber
       : this.currentStepNumber + 1;
 
-    this.steps?.toArray()[this.currentStepNumber].lazyLoadStepContent.isDisplayedSubject.next(true);
+    this.showStep();
   }
 
   isForwardDisabled(): boolean {
@@ -51,5 +51,16 @@ export class StepperComponent implements OnInit, AfterViewInit {
 
   isBackwardDisabled(): boolean {
     return this.currentStepNumber === 0;
+  }
+
+  hideStep() {
+    this.steps?.toArray()[this.currentStepNumber].setVisibility(false);
+    // These should be uncommented for a working lazy loading version
+    // this.steps?.toArray()[this.currentStepNumber].lazyLoadStepContent.isDisplayedSubject.next(false);
+  }
+
+  showStep() {
+    this.steps?.toArray()[this.currentStepNumber].setVisibility(true);
+    // this.steps?.toArray()[this.currentStepNumber].lazyLoadStepContent.isDisplayedSubject.next(true);
   }
 }

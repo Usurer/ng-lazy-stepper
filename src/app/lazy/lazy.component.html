@@ -1,8 +1,12 @@
 <p>
 lazy works!
 </p>
-<ng-container *ngIf="isDisplayed$ | async">
+<ng-container>
   <h1>{{ name }}</h1>
-
-  <app-data [name]="name" ></app-data>
+  
+  <p>lazy loaded data begins</p>
+  
+  <app-data *ngIf="isDisplayed$ | async" [name]="name" ></app-data>
+  
+  <p>lazy loaded data ends</p>
 </ng-container>

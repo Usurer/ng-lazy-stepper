@@ -8,7 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LazyComponent implements OnInit, LazyComponent {
 
-  readonly isDisplayedSubject = new BehaviorSubject(false);
+  // Set this to false for a working lazy loading version
+  readonly isDisplayedSubject = new BehaviorSubject(true);
   readonly isDisplayed$ = this.isDisplayedSubject.asObservable();
 
   @Input() name: string;

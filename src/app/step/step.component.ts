@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild, ContentChild } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 export interface LazyComponent {
   readonly isDisplayedSubject: Subject<boolean>;
@@ -11,6 +11,8 @@ export interface LazyComponent {
   styleUrls: ['./step.component.css']
 })
 export class StepComponent implements OnInit {
+  readonly isDisplayedSubject = new BehaviorSubject(false);
+  readonly isDisplayed$ = this.isDisplayedSubject.asObservable();
 
   constructor() { }
 
@@ -19,4 +21,8 @@ export class StepComponent implements OnInit {
 
   @ViewChild('contentTemplate', { static: true }) template: TemplateRef<unknown>;
   @ContentChild('lazyComponent') lazyLoadStepContent: LazyComponent;
+
+  setVisibility(value: boolean) {
+    this.isDisplayedSubject.next(value);
+  }
 }
