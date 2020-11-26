@@ -1,17 +1,17 @@
 <app-stepper>
   <app-step>
-    <app-lazy [name]="'Lazy 1'" #lazyComponent>
+    <app-lazy [name]="'Lazy 1'" #lazy>
     </app-lazy>
 
-    <app-eager [name]="'Eager 1'" #lazyComponent>
+    <app-eager [name]="'Eager 1'">
     </app-eager>
   </app-step>
 
   <app-step>
-    <app-lazy [name]="'Lazy 2'" #lazyComponent>
+    <app-lazy [name]="'Lazy 2'" #lazy>
     </app-lazy>
 
-    <app-eager [name]="'Eager 2'" #lazyComponent>
+    <app-eager [name]="'Eager 2'">
     </app-eager>
   </app-step>
 </app-stepper>
