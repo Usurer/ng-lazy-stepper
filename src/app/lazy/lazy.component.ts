@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
 @Component({
@@ -6,17 +6,21 @@ import { BehaviorSubject } from "rxjs";
   templateUrl: "./lazy.component.html",
   styleUrls: ["./lazy.component.css"]
 })
-export class LazyComponent implements OnInit, LazyComponent {
+export class LazyComponent implements OnInit, OnDestroy, LazyComponent {
   readonly isDisplayedSubject = new BehaviorSubject(false);
   readonly isDisplayed$ = this.isDisplayedSubject.asObservable();
 
   @Input() name: string;
 
   constructor() {
-    console.log(`LazyComponent ${this.name} created`);
+    console.log('%c %s','color: blue', `LazyComponent Created`);
   }
 
   ngOnInit() {
-    console.log(`LazyComponent ${this.name} initialized`);
+    console.log('%c %s','color: green', `LazyComponent ${this.name} OnInit`);
+  }
+
+  ngOnDestroy() {
+    console.log('%c %s','color: red', `LazyComponent ${this.name} component OnDestroy`);
   }
 }

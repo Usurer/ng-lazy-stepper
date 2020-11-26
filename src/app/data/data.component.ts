@@ -10,15 +10,15 @@ export class DataComponent implements OnInit, OnDestroy {
   @Input() name: string;
 
   constructor() {
-    console.log(`Data ${this.name} component Created`);
+    console.log('%c %s','color: blue', `Data component Created`);
   }
 
   ngOnInit() {
-    console.log(`Data ${this.name} component OnInit`);
+    console.log('%c %s','color: green', `Data ${this.name} component OnInit`);
   }
 
   ngOnDestroy() {
-    console.log(`Data ${this.name} component OnDestroy`);
+    console.log('%c %s','color: red', `Data ${this.name} component OnDestroy`);
   }
 
 }
