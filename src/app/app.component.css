@@ -1,3 +1,16 @@
-p {
-  font-family: Lato;
+app-stepper {
+  display: block;
+  width: 100%;
+}
+
+app-lazy {
+  display: block;
+  width: 100%;
+  background-color: #eaeaea;
+}
+
+app-eager {
+  display: block;
+  width: 100%;
+  background-color: #bababa;
 }
