@@ -55,12 +55,11 @@ export class StepperComponent implements OnInit, AfterViewInit {
 
   hideStep() {
     this.steps?.toArray()[this.currentStepNumber].setVisibility(false);
-    // These should be uncommented for a working lazy loading version
-    // this.steps?.toArray()[this.currentStepNumber].lazyLoadStepContent.isDisplayedSubject.next(false);
+    this.steps?.toArray()[this.currentStepNumber].lazyLoadStepContent.isDisplayedSubject.next(false);
   }
 
   showStep() {
     this.steps?.toArray()[this.currentStepNumber].setVisibility(true);
-    // this.steps?.toArray()[this.currentStepNumber].lazyLoadStepContent.isDisplayedSubject.next(true);
+    this.steps?.toArray()[this.currentStepNumber].lazyLoadStepContent.isDisplayedSubject.next(true);
   }
 }
